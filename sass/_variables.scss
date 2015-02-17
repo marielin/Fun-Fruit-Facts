@@ -1,7 +1,25 @@
-$orange         : #BD3613;
-$blue           : #2176C7;
+// Colors
+	$title-color 		: white;
+	$text-color 		: black;
+	$bg-color 			: white;
+	$button-color 		: hsla(0, 0, 0, 0.05);
+	$button-hover-color : hsla(0, 0, 0, 0.1);
+	$button-arrow-color : hsla(0, 0, 100%, 0.2);
+	$p1-color 			: #4294FF;
+	$p2-color 			: #C487FC;
+	$s1-color 			: lighten($p1-color, 25%);
+	$s2-color 			: darken($p2-color, 15%);
+	$t1-color 			: #58E2C6;
+	// $t2-color 		: #;
 
-$font-primary: Merriweather, serif;
-$font-secondary: Bree Serif, serif;
+// Fonts
+	$p-font: 	Lato, sans-serif;
+	// $s-font:  	serif;
 
-$default-border-radius : 10px;
+// Parameters
+	$layer2: 	2;
+	$layer1: 	1;
+	$layer0: 	0;
+	$layer-1:	-1;
+	$layer-2:	-2;
+	$default-border-radius : 10px;

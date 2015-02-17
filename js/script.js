@@ -1,16 +1,29 @@
-var divs = document.getElementsByTagName('div');
-for(var i=0; i<divs.length; i++) {
-  divs[i].addEventListener("click", highlightThis);
-  /*
-  divs[i].addEventListener("click", highlightThis, true);
-  divs[i].addEventListener("click", highlightThis, false);*/
-}
+$(document).ready(function () {
+	var panes = $("#panes").children(".pane");
+	var cur = 0;
 
-function highlightThis(event) {
-    //event.stopPropagation();
-  
-    var backgroundColor = this.style.backgroundColor;
-    this.style.backgroundColor='yellow';
-    alert(this.className);
-    this.style.backgroundColor=backgroundColor;
-}
+	// for (i = 0; i < panes.length; i++) {
+	// 	panes.eq(i).css("opacity", "0");
+	// };
+
+	function autoAdvance() {
+		clearInterval(timer);
+		panes.eq(i % panes.length).fadeOut(1000);
+		panes.eq((i + 1) % panes.length).fadeIn(1000);
+	};
+
+	function advance() {
+		panes.eq(i % panes.length).fadeOut(1000);
+		panes.eq((i + 1) % panes.length).fadeIn(1000);
+	};
+
+	function rewind() {
+		panes.eq(i % panes.length).fadeOut(1000);
+		panes.eq((i + panes.length - 1) % panes.length).fadeIn(1000);
+	};
+
+	$("#prev").click(rewind());
+	$("#next").click(advance());
+
+	var timer = setInterval(autoAdvance(), 5000);
+});

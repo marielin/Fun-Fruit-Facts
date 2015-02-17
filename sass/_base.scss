@@ -1,13 +1,184 @@
-@import url('http://fonts.googleapis.com/css?family=Bree+Serif|Merriweather');
+@import url('http://fonts.googleapis.com/css?family=Lato:300,400,600');
 @import url('http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
 
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: $p1-color;
+    overflow: hidden;
 
-h1 {
-  font-size: 2.2rem;
-  color: lighten($orange, 25);
+    z-index: $layer2;
+
+    h1 {
+	    display: inline-block;
+	    float: left;
+	    height: 100px;
+	    margin-left: 30px;
+	    color: white;
+	    font: 400 3rem $p-font;
+		line-height: 100px;
+	}
+
+	nav {
+		display: inline-block;
+    	float: right;
+    	margin-right: 40px;
+
+    	a {
+			margin-left: 30px;
+			color: $s1-color;
+			font: 300 1.1rem $p-font;
+			text-decoration: none;
+			line-height: 150px;
+		}
+	}
+
+	a:hover {
+		color: white;
+	}
 }
 
-.test {
-  font-size: 1.2rem;
-  color: $blue;
+main {
+	margin-top: 100px;
+
+	.carousel {
+		position: relative;
+		width: 100%;
+		height: 300px;
+
+		#buttons {
+			button {
+				display: inline-block;
+				height: 300px;
+				width: 80px;
+				opacity: 20%;
+				border: 0px;
+
+				outline: 0;
+			}
+
+			#prev {
+				float: left;
+				background-color: $button-color;
+			}
+
+			#prev:hover {
+				background-color: $button-hover-color;
+			}
+
+			#next {
+				float: right;
+				background-color: $button-color;
+			}
+
+			#next:hover {
+				background-color: $button-hover-color;
+			}
+		}
+
+		i {
+			font-size: 60px;
+			color: $button-arrow-color;
+		}
+
+		#panes {
+			width: 100%;
+
+			.pane {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 300px;
+
+				z-index: $layer-1;
+			}
+
+			#pane1 {
+				background-color: $s1-color;
+			}
+
+			#pane2 {
+				background-color: $s2-color;
+			}
+
+			#pane3 {
+				background-color: $t1-color;
+			}
+		}
+	}
+
+	section {
+		background-color: $bg-color;
+		padding: 40px 80px 60px 80px;
+
+		h1 {
+			color: $p2-color;
+			margin-bottom: 1rem;
+			font: 300 2rem $p-font;
+		}
+
+		p {
+			color: $text-color;
+			font: 300 1.1rem $p-font;
+			line-height: 1.4rem;
+		}
+	}
+
+	section.transparent {
+		background-color: transparent;
+
+		h1 {
+			color: white;
+			margin-bottom: 1rem;
+			font: 300 2rem $p-font;
+		}
+
+		p {
+			color: white;
+			font: 300 1.1rem $p-font;
+			line-height: 1.4rem;
+		}
+	}
+}
+
+footer {
+	position: relative;
+    width: 100%;
+    height: 60px;
+    background-color: $p1-color;
+    overflow: hidden;
+
+	#social {
+    	margin-right: 30px;
+
+		a {
+	    	display: inline-block;
+			float: right;
+	    	margin-top: 15px;
+	    	margin-left: 20px;
+
+	    	i {
+	    		color: $s1-color;
+	    		font-size: 30px;
+	    	}
+		}
+	}
+
+	#copyright {
+			display: inline-block;
+			float: left;
+			margin-left: 30px;
+			font: 300 1.1rem $p-font;
+			line-height: 60px;
+			color: $s1-color;
+	}
+}
+
+html {
+	background: url(/img/background-image.png) no-repeat center center fixed;
+	background-size: cover;
 }
