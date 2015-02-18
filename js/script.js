@@ -1,29 +1,54 @@
 $(document).ready(function () {
-	var panes = $("#panes").children(".pane");
-	var cur = 0;
+	initCarousel();
+})
 
-	// for (i = 0; i < panes.length; i++) {
-	// 	panes.eq(i).css("opacity", "0");
-	// };
+function initCarousel() {
+	var panes = $(".pane");
+	var curPane = 0;
+	var duration = 4000;
+	var timer = setInterval(function(){autoAdvance()}, duration);
+
+	$("#prev").click(function(){rewind()});
+	$("#next").click(function(){advance()});
+
+	panes.eq((curPane + 1) % panes.length).addClass("hidden");
+	panes.eq((curPane + 2) % panes.length).addClass("hidden");
 
 	function autoAdvance() {
-		clearInterval(timer);
-		panes.eq(i % panes.length).fadeOut(1000);
-		panes.eq((i + 1) % panes.length).fadeIn(1000);
-	};
+		panes.eq((curPane + 0) % panes.length).addClass("hidden");
+		panes.eq((curPane + 1) % panes.length).removeClass("hidden");
+		curPane = (curPane + 1) % panes.length;
+	}
 
 	function advance() {
-		panes.eq(i % panes.length).fadeOut(1000);
-		panes.eq((i + 1) % panes.length).fadeIn(1000);
-	};
+		clearInterval(timer);
+		panes.eq((curPane + 0) % panes.length).addClass("hidden");
+		panes.eq((curPane + 1) % panes.length).removeClass("hidden");
+		curPane = (curPane + 1) % panes.length;
+		timer = setInterval(function(){autoAdvance()}, duration);
+	}
 
 	function rewind() {
-		panes.eq(i % panes.length).fadeOut(1000);
-		panes.eq((i + panes.length - 1) % panes.length).fadeIn(1000);
-	};
+		clearInterval(timer);
+		panes.eq((curPane + 0) % panes.length).addClass("hidden");
+		panes.eq((curPane + 1) % panes.length).removeClass("hidden");
+		curPane = (curPane + 1) % panes.length;
+		timer = setInterval(function(){autoAdvance()}, duration);
+	}
+}
 
-	$("#prev").click(rewind());
-	$("#next").click(advance());
+$(window).scroll(function() {
+	var threshold = 300;
+	var scrollpos = window.pageYOffset || document.documentElement.scrollTop;
 
-	var timer = setInterval(autoAdvance(), 5000);
+	if (scrollpos >= threshold)
+		$("header").addClass("shrunk");
+	else
+		$("header").removeClass("shrunk");
+})
+
+$("#button").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#myDiv").offset().top
+    }, 2000);
 });

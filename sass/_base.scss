@@ -1,48 +1,83 @@
+/* Inspiration:
+ * http://tympanus.net/codrops/2013/06/06/on-scroll-animated-header/
+ *
+ *
+ */
+
 @import url('http://fonts.googleapis.com/css?family=Lato:300,400,600');
 @import url('http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
 
+header.shrunk {
+	@include height-transition();
+	height: $s-header-height;
+
+	h1 {
+		@include all-transition();
+		font-size: 2rem;
+		line-height: $s-header-height;
+	}
+
+	nav a {
+		@include all-transition();
+		line-height: $s-header-height;
+	}
+}
+
 header {
+	@include height-transition();
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100px;
+    height: $header-height;
     background-color: $p1-color;
     overflow: hidden;
 
     z-index: $layer2;
 
     h1 {
+    	@include all-transition();
 	    display: inline-block;
 	    float: left;
-	    height: 100px;
+	    height: $header-height;
 	    margin-left: 30px;
 	    color: white;
 	    font: 400 3rem $p-font;
-		line-height: 100px;
+		line-height: $header-height;
 	}
 
 	nav {
 		display: inline-block;
     	float: right;
-    	margin-right: 40px;
+    	margin-right: 37px;
+
+    	a.currentSection {
+    		@include all-transition();
+    		color: white;
+			border-bottom: 1.5px solid white;
+    	}
 
     	a {
-			margin-left: 30px;
+    		@include all-transition();
+    		padding: 0px 3px 2px 3px;
+			margin-left: 20px;
+			border-bottom: 1.5px solid transparent;
 			color: $s1-color;
 			font: 300 1.1rem $p-font;
 			text-decoration: none;
-			line-height: 150px;
-		}
-	}
 
-	a:hover {
-		color: white;
+			line-height: $header-height * 2 - $s-header-height;
+		}
+
+		a:hover {
+			@include all-transition();
+			border-bottom: 1.5px solid $s1-color;
+		}
 	}
 }
 
 main {
-	margin-top: 100px;
+	margin-top: $header-height;
 
 	.carousel {
 		position: relative;
@@ -87,26 +122,49 @@ main {
 		#panes {
 			width: 100%;
 
-			.pane {
+			li {
 				position: absolute;
 				top: 0;
 				left: 0;
 				width: 100%;
 				height: 300px;
+				opacity: 50%;
 
-				z-index: $layer-1;
+				z-index: $layer-2;
+			}
+
+			#pane1.hidden {
+				@include carousel-transition();
+				background-color: transparent;
+			}
+
+			#pane2.hidden {
+				@include carousel-transition();
+				background-color: transparent;
+			}
+
+			#pane3.hidden {
+				@include carousel-transition();
+				background-color: transparent;
 			}
 
 			#pane1 {
+				@include carousel-transition();
 				background-color: $s1-color;
 			}
 
 			#pane2 {
-				background-color: $s2-color;
+				@include carousel-transition();
+				background-color: $p2-color;
 			}
 
 			#pane3 {
+				@include carousel-transition();
 				background-color: $t1-color;
+			}
+
+			#backPane {
+				background-color: white;
 			}
 		}
 	}

@@ -10,16 +10,20 @@
 	$s1-color 			: lighten($p1-color, 25%);
 	$s2-color 			: darken($p2-color, 15%);
 	$t1-color 			: #58E2C6;
-	// $t2-color 		: #;
+	$t2-color 			: darken($p1-color, 10%);
 
 // Fonts
 	$p-font: 	Lato, sans-serif;
 	// $s-font:  	serif;
 
 // Parameters
-	$layer2: 	2;
-	$layer1: 	1;
-	$layer0: 	0;
-	$layer-1:	-1;
-	$layer-2:	-2;
-	$default-border-radius : 10px;
+	$header-height: 		100px;
+	$s-header-height: 		60px;
+	$carousel-duration: 	1s;
+	$shrink-duration: 		0.3s;
+	$indicator-duration: 	0.3s;
+	$layer2: 				2;
+	$layer1: 				1;
+	$layer0: 				0;
+	$layer-1:				-1;
+	$layer-2:				-2;

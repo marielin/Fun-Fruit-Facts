@@ -1,0 +1,23 @@
+@mixin height-transition() {
+	-webkit-transition: height $shrink-duration;
+	-moz-transition: height $shrink-duration;
+	transition: height $shrink-duration;
+}
+
+@mixin all-transition() {
+	-webkit-transition: all $shrink-duration;
+	-moz-transition: all $shrink-duration;
+	transition: all $shrink-duration;
+}
+
+@mixin carousel-transition() {
+	-webkit-transition: all $carousel-duration;
+	-moz-transition: all $carousel-duration;
+	transition: all $carousel-duration;
+}
+
+@mixin indicator-transition() {
+	-webkit-transition: all $indicator-duration;
+	-moz-transition: all $indicator-duration;
+	transition: all $indicator-duration;
+}
