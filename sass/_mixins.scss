@@ -21,3 +21,7 @@
 	-moz-transition: all $indicator-duration;
 	transition: all $indicator-duration;
 }
+
+@mixin shadow() {
+	box-shadow: 0 0 20px rgba(0, 0, 0, $shadow-opacity);
+}

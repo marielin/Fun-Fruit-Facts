@@ -11,19 +11,20 @@ header.shrunk {
 	@include height-transition();
 	height: $s-header-height;
 
-	h1 {
+	h1 a {
 		@include all-transition();
 		font-size: 2rem;
 		line-height: $s-header-height;
 	}
 
 	nav a {
-		@include all-transition();
+		@include indicator-transition();
 		line-height: $s-header-height;
 	}
 }
 
 header {
+	@include shadow();
 	@include height-transition();
     position: fixed;
     top: 0;
@@ -41,9 +42,14 @@ header {
 	    float: left;
 	    height: $header-height;
 	    margin-left: 30px;
-	    color: white;
-	    font: 400 3rem $p-font;
-		line-height: $header-height;
+
+		a {
+			@include all-transition();
+			color: white;
+		    font: 400 3rem $p-font;
+		    text-decoration: none;
+			line-height: $header-height;
+		}
 	}
 
 	nav {
@@ -52,31 +58,31 @@ header {
     	margin-right: 37px;
 
     	a.currentSection {
-    		@include all-transition();
+    		@include indicator-transition();
     		color: white;
 			border-bottom: 1.5px solid white;
     	}
 
     	a {
-    		@include all-transition();
+    		@include indicator-transition();
     		padding: 0px 3px 2px 3px;
 			margin-left: 20px;
 			border-bottom: 1.5px solid transparent;
 			color: $s1-color;
 			font: 300 1.1rem $p-font;
 			text-decoration: none;
-
 			line-height: $header-height * 2 - $s-header-height;
 		}
 
 		a:hover {
-			@include all-transition();
+			@include indicator-transition();
 			border-bottom: 1.5px solid $s1-color;
 		}
 	}
 }
 
 main {
+	position: relative;
 	margin-top: $header-height;
 
 	.carousel {
@@ -89,28 +95,22 @@ main {
 				display: inline-block;
 				height: 300px;
 				width: 80px;
-				opacity: 20%;
 				border: 0px;
-
+				background-color: $button-color;
+				opacity: 20%;
 				outline: 0;
+			}
+
+			button:hover {
+				background-color: $button-hover-color;
 			}
 
 			#prev {
 				float: left;
-				background-color: $button-color;
-			}
-
-			#prev:hover {
-				background-color: $button-hover-color;
 			}
 
 			#next {
 				float: right;
-				background-color: $button-color;
-			}
-
-			#next:hover {
-				background-color: $button-hover-color;
 			}
 		}
 
@@ -119,7 +119,7 @@ main {
 			color: $button-arrow-color;
 		}
 
-		#panes {
+		.panes {
 			width: 100%;
 
 			li {
@@ -131,45 +131,48 @@ main {
 				opacity: 50%;
 
 				z-index: $layer-2;
+
+				img {
+					@include carousel-transition();
+					position: absolute;
+					bottom: -200px;
+					width: 100%;
+					height: auto;
+					min-width: 100%;
+					min-height: 100%;
+					opacity: 1;
+				}
+
+				img.hidden {
+					@include carousel-transition();
+					opacity: 0;
+				}
+			}
+		}
+	}
+
+	section#summary {
+		padding-bottom: 40px;
+		div {
+			-webkit-column-count: 3;
+    		-moz-column-count: 3;
+    		column-count: 3;
+			font: 300 1.1rem $p-font;
+			text-align: center;
+
+			i {
+				color: $s1-color;
+	    		font-size: 100px;
 			}
 
-			#pane1.hidden {
-				@include carousel-transition();
-				background-color: transparent;
-			}
-
-			#pane2.hidden {
-				@include carousel-transition();
-				background-color: transparent;
-			}
-
-			#pane3.hidden {
-				@include carousel-transition();
-				background-color: transparent;
-			}
-
-			#pane1 {
-				@include carousel-transition();
-				background-color: $s1-color;
-			}
-
-			#pane2 {
-				@include carousel-transition();
-				background-color: $p2-color;
-			}
-
-			#pane3 {
-				@include carousel-transition();
-				background-color: $t1-color;
-			}
-
-			#backPane {
-				background-color: white;
+			p {
+				margin-top: 10px;
 			}
 		}
 	}
 
 	section {
+		@include shadow();
 		background-color: $bg-color;
 		padding: 40px 80px 60px 80px;
 
@@ -177,6 +180,13 @@ main {
 			color: $p2-color;
 			margin-bottom: 1rem;
 			font: 300 2rem $p-font;
+		}
+
+		img {
+			float: right;
+			margin-left: 20px;
+			height: 200px;
+			width: auto;
 		}
 
 		p {
@@ -188,6 +198,7 @@ main {
 
 	section.transparent {
 		background-color: transparent;
+		box-shadow: 0 0 0px;
 
 		h1 {
 			color: white;
@@ -204,6 +215,7 @@ main {
 }
 
 footer {
+	@include shadow();
 	position: relative;
     width: 100%;
     height: 60px;
@@ -226,15 +238,29 @@ footer {
 		}
 	}
 
-	#copyright {
-			display: inline-block;
-			float: left;
-			margin-left: 30px;
-			font: 300 1.1rem $p-font;
-			line-height: 60px;
-			color: $s1-color;
+	span {
+		display: inline-block;
+		float: left;
+		margin-left: 30px;
+		font: 300 1.1rem $p-font;
+		line-height: 60px;
+		color: $s1-color;
 	}
 }
+
+// video {
+// 	position: fixed;
+// 	left: 50%;
+// 	top: 0;
+// 	transform: translate(-50%,0);
+// 	width: auto;
+// 	height: auto;
+// 	min-width: 120%;
+// 	min-height: 120%;
+// 	z-index: $layer-3;
+// 	background: url(/img/aurora-still.png) center center no-repeat;
+// 	background-size: cover;
+// }
 
 html {
 	background: url(/img/background-image.png) no-repeat center center fixed;
