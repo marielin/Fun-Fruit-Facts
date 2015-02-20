@@ -51,7 +51,7 @@ $(window).scroll(function() {
 		$("header").removeClass("shrunk");
 
 	var links = $("header nav").children("a");
-	var sections = $("main").children("section");
+	var sections = $("main").children("section").not("#summary");
 	var numSections = sections.length;
 
 	if (scrollpos >= $(document).height() - $(window).height()) {
