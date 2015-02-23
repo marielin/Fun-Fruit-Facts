@@ -9,8 +9,8 @@ function initCarousel() {
 	var duration = 6000;
 	var timer = setInterval(function(){autoAdvance()}, duration);
 
-	$("#prev").click(function(){rewind()});
-	$("#next").click(function(){advance()});
+	// $("#prev").click(function(){rewind()});
+	// $("#next").click(function(){advance()});
 
 	function autoAdvance() {
 		curPane = (curPane + 1) % numPanes;
@@ -20,25 +20,25 @@ function initCarousel() {
 		}
 	}
 
-	function advance() {
-		clearInterval(timer);
-		curPane = (curPane + 1) % numPanes;
-		for(i = 0; i < numPanes; i++) {
-			if (i == curPane) panes.eq(i).children("img").removeClass("hidden");
-			else panes.eq(i).children("img").addClass("hidden");
-		}
-		timer = setInterval(function(){autoAdvance()}, duration);
-	}
+	// function advance() {
+	// 	clearInterval(timer);
+	// 	curPane = (curPane + 1) % numPanes;
+	// 	for(i = 0; i < numPanes; i++) {
+	// 		if (i == curPane) panes.eq(i).children("img").removeClass("hidden");
+	// 		else panes.eq(i).children("img").addClass("hidden");
+	// 	}
+	// 	timer = setInterval(function(){autoAdvance()}, duration);
+	// }
 
-	function rewind() {
-		clearInterval(timer);
-		curPane = (curPane + 1) % numPanes;
-		for(i = 0; i < numPanes; i++) {
-			if (i == curPane) panes.eq(i).children("img").removeClass("hidden");
-			else panes.eq(i).children("img").addClass("hidden");
-		}
-		timer = setInterval(function(){autoAdvance()}, duration);
-	}
+	// function rewind() {
+	// 	clearInterval(timer);
+	// 	curPane = (curPane + 1) % numPanes;
+	// 	for(i = 0; i < numPanes; i++) {
+	// 		if (i == curPane) panes.eq(i).children("img").removeClass("hidden");
+	// 		else panes.eq(i).children("img").addClass("hidden");
+	// 	}
+	// 	timer = setInterval(function(){autoAdvance()}, duration);
+	// }
 }
 
 $(window).scroll(function() {
